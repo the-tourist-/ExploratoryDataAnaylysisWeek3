@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1403387446803.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "220F0F40",
+    "lastKnownWriteTime" : 1403387351,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "baltimoreByType",
+        "contentUrl" : "content?title=baltimoreByType&file=e4d237ceb92a4de1b589ce9871564aef.htm",
+        "displayedObservations" : 16,
+        "displayedVariables" : 3,
+        "totalObservations" : 16,
+        "variables" : 3
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

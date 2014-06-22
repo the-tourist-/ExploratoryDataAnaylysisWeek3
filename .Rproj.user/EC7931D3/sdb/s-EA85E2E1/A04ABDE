@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1403234247019.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A04ABDE",
+    "lastKnownWriteTime" : 8367760890713892182,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "SCC",
+        "contentUrl" : "content?title=SCC&file=a2fb26b283a24dad92e93bce53d5cee2.htm",
+        "displayedObservations" : "1000",
+        "displayedVariables" : 15,
+        "totalObservations" : "11717",
+        "variables" : "15"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

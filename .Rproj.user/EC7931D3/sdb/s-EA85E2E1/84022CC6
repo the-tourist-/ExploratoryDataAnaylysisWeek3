@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1403236917745.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "84022CC6",
+    "lastKnownWriteTime" : 7021797280558105903,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "DT",
+        "contentUrl" : "content?title=DT&file=a547c9ead62545c9b25c815d9983ad51.htm",
+        "displayedObservations" : "1000",
+        "displayedVariables" : 20,
+        "totalObservations" : "6497651",
+        "variables" : "20"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

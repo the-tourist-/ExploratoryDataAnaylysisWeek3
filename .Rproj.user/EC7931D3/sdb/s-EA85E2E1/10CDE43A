@@ -1,0 +1,17 @@
+{
+    "contents" : "# Of the four types of sources indicated by the type (point, nonpoint, onroad, nonroad) variable, which of these four sources have seen decreases in emissions from 1999–2008 for Baltimore City? \n# Which have seen increases in emissions from 1999–2008?require(\"ggplot2\")\n\nrequire(\"data.table\")\n\n#Load Data\nif (!file.exists(\"exdata_data_household_power_consumption.zip\"))\n  download.file(\"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip\",\n                \"exdata_data_household_power_consumption.zip\")\n\nif (!file.exists(\"summarySCC_PM25.rds\") | !file.exists(\"Source_Classification_Code.rds\"))\n  unzip(\"exdata_data_household_power_consumption.zip\")\n\nif (sum(ls()==\"SCC\")==0 || sum(class(SCC) == \"data.table\")==0) {\n  SCC <- readRDS(\"Source_Classification_Code.rds\")\n  SCC$SCC <- as.character(SCC$SCC)\n  SCC <- data.table(SCC, key=\"SCC\")\n}\n\nif (sum(ls()==\"NEI\")==0 || sum(class(NEI) == \"data.table\")==0) {\n  NEI <- readRDS(\"summarySCC_PM25.rds\")\n  NEI <- data.table(NEI)\n}\nif (sum(ls()==\"DT\")==0 || sum(class(DT) == \"data.table\")==0)\n  DT  <- merge(NEI, SCC, by=\"SCC\", all.x=T)\n\n# Create Plot\npng(\"plot3.png\")\nbaltimoreByType <- DT[DT$fips == \"24510\",sum(Emissions), by=\"year,type\"][order(year)]\nchart <- ggplot(baltimoreByType, aes(x=year, y=V1, colour=type)) + \n  geom_line(size=2) +\n  xlab(\"Year\") + ylab(\"PM2.5\") + ggtitle(\"Total PM2.5 Emissions by Type for Baltimore City\") +\n  theme(title = element_text(face=\"bold\")) +\n  scale_colour_discrete(name=\"Emission Type\", labels=c(\"Non-Road\", \"Non-Point\", \"On-Road\", \"Point\")) +\n  stat_smooth(method=\"lm\", se=F)\n\nprint(chart)\ndev.off",
+    "created" : 1403256271000.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2905960047",
+    "id" : "10CDE43A",
+    "lastKnownWriteTime" : 1403437523,
+    "path" : "~/GitHub/ExploratoryDataAnaylysisWeek3/plot3.R",
+    "project_path" : "plot3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}

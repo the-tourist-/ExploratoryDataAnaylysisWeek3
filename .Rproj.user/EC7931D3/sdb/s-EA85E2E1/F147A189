@@ -1,0 +1,16 @@
+{
+    "contents" : "require(\"data.table\")\n\nsetwd(\"~/GitHub/ExploratoryDataAnaylysisWeek3\")\n\nif (!file.exists(\"exdata_data_household_power_consumption.zip\"))\n  download.file(\"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip\",\n                \"exdata_data_household_power_consumption.zip\")\n\nif (!file.exists(\"summarySCC_PM25.rds\") | !file.exists(\"Source_Classification_Code.rds\"))\n  unzip(\"exdata_data_household_power_consumption.zip\")\n\nSCC <- readRDS(\"Source_Classification_Code.rds\")\nSCC$SCC <- as.character(SCC$SCC)\nSCC <- data.table(SCC, key=\"SCC\")\nNEI <- readRDS(\"summarySCC_PM25.rds\")\nNEI <- data.table(NEI)\n\nDT  <- merge(NEI, SCC, by=\"SCC\", all.x=T)\n\n\n",
+    "created" : 1403214497679.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4219949835",
+    "id" : "F147A189",
+    "lastKnownWriteTime" : 1403386731,
+    "path" : "~/GitHub/ExploratoryDataAnaylysisWeek3/LoadDataset.R",
+    "project_path" : "LoadDataset.R",
+    "properties" : {
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
