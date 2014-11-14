@@ -2,7 +2,7 @@ require("data.table")
 
 setwd("~/GitHub/ExploratoryDataAnaylysisWeek3")
 
-if (!file.exists("NationalEmmissionsInvestoryPollutionData.zip"))
+if (!file.exists("exdata_data_household_power_consumption.zip"))
   download.file("https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip",
                 "exdata_data_household_power_consumption.zip")
 

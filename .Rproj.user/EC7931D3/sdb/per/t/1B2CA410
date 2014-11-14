@@ -1,0 +1,16 @@
+{
+    "contents" : "#Q1 - Have total emissions from PM2.5 decreased in the United States from 1999 to 2008?\n\n#Load Data\nrequire(\"data.table\")\n\nif (!file.exists(\"exdata_data_household_power_consumption.zip\"))\n  download.file(\"https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip\",\n                \"exdata_data_household_power_consumption.zip\")\n\nif (!file.exists(\"summarySCC_PM25.rds\") | !file.exists(\"Source_Classification_Code.rds\"))\n  unzip(\"exdata_data_household_power_consumption.zip\")\n\nif (sum(ls()==\"SCC\")==0 || sum(class(SCC) == \"data.table\")==0) {\n  SCC <- readRDS(\"Source_Classification_Code.rds\")\n  SCC$SCC <- as.character(SCC$SCC)\n  SCC <- data.table(SCC, key=\"SCC\")\n}\n\nif (sum(ls()==\"NEI\")==0 || sum(class(NEI) == \"data.table\")==0) {\n  NEI <- readRDS(\"summarySCC_PM25.rds\")\n  NEI <- data.table(NEI)\n}\nif (sum(ls()==\"DT\")==0 || sum(class(DT) == \"data.table\")==0)\n  DT  <- merge(NEI, SCC, by=\"SCC\", all.x=T)\n\n# Create Plot\npng(\"plot1.png\")\nemissionsByYear <- DT[,sum(Emissions), by=year]\nbp <- barplot(emissionsByYear$V1, names=emissionsByYear$year, xlab=\"Year\", ylab=\"PM2.5\", main=\"Total PM2.5 emission from all sources\")\nlines(bp, predict(lm(V1 ~ year, data=emissionsByYear)), col=\"blue\")\ndev.off()\n\n",
+    "created" : 1403387116863.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2575740154",
+    "id" : "1B2CA410",
+    "lastKnownWriteTime" : 1403439097,
+    "path" : "~/GitHub/ExploratoryDataAnaylysisWeek3/plot1.R",
+    "project_path" : "plot1.R",
+    "properties" : {
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
